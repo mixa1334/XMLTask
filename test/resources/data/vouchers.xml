@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<tourist-vouchers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="https://www.example.com/touristVouchers"
+                  xsi:schemaLocation="https://www.example.com/touristVouchers  vouchers.xsd">
+
+    <entertainment-trip id="1">
+        <country>RUSSIA</country>
+        <number-of-days>5</number-of-days>
+        <hotel-characteristic>
+            <number-of-stars>2</number-of-stars>
+            <name>Trinity</name>
+            <tv-presence>true</tv-presence>
+        </hotel-characteristic>
+        <coast>50</coast>
+        <date>2021-10-31</date>
+        <type>excursion</type>
+    </entertainment-trip>
+
+    <business-trip id="2">
+        <country>CANADA</country>
+        <number-of-days>4</number-of-days>
+        <hotel-characteristic>
+            <number-of-stars>4</number-of-stars>
+            <name>Renaissance</name>
+            <tv-presence>false</tv-presence>
+        </hotel-characteristic>
+        <coast>240</coast>
+        <date>2021-12-12</date>
+        <company>google</company>
+    </business-trip>
+</tourist-vouchers>
