@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="https://www.example.com/abstractTouristVouchers"
-        xmlns:c="https://www.example.com/abstractTouristVouchers"
+        targetNamespace="https://www.example.com/touristVouchers"
+        xmlns:c="https://www.example.com/touristVouchers"
         elementFormDefault="qualified">
     <element name="tourist-vouchers">
         <complexType>
             <sequence>
-                <element ref="c:TouristVouchers" maxOccurs="unbounded"/>
+                <element ref="c:voucher" maxOccurs="unbounded"/>
             </sequence>
         </complexType>
     </element>
@@ -14,8 +14,8 @@
     <complexType name="TouristVoucher">
         <sequence>
             <element name="country" type="c:country"/>
-            <element name="number-of-days" type="integer"/>
-            <element name="hotel-characteristic" type="c:hotelCharacteristic"/>
+            <element name="number-of-days" type="c:days"/>
+            <element name="hotel-characteristic" type="c:HotelCharacteristic"/>
             <element name="coast" type="c:price"/>
             <element name="date" type="date"/>
         </sequence>
@@ -23,26 +23,11 @@
         <attribute name="name" type="string" use="optional" default="tourist voucher"/>
     </complexType>
 
-    <complexType name="hotelCharacteristic">
+    <complexType name="HotelCharacteristic">
         <sequence>
-            <element name="number-of-stars">
-                <simpleType>
-                    <restriction base="integer">
-                        <minInclusive value="1"/>
-                        <maxExclusive value="5"/>
-                    </restriction>
-                </simpleType>
-            </element>
-            <element name="name">
-                <simpleType>
-                    <restriction base="string"/>
-                </simpleType>
-            </element>
-            <element name="tv-presence">
-                <simpleType>
-                    <restriction base="boolean"/>
-                </simpleType>
-            </element>
+            <element name="number-of-stars" type="c:stars"/>
+            <element name="name" type="string"/>
+            <element name="tv-presence" type="boolean"/>
         </sequence>
     </complexType>
 
@@ -82,13 +67,27 @@
         </restriction>
     </simpleType>
 
-    <simpleType name="touristVoucherId">
-        <restriction base="ID">
-            <pattern value="\d{1,15}"/>
+    <simpleType name="days">
+        <restriction base="unsignedInt">
+            <minInclusive value="0"/>
+            <maxInclusive value="30"/>
         </restriction>
     </simpleType>
 
-    <element name="TouristVouchers" type="c:TouristVoucher" abstract="true"/>
-    <element name="EntertainmentTrips" type="c:EntertainmentTrip" substitutionGroup="c:TouristVouchers"/>
-    <element name="BusinessTrips" type="c:BusinessTrip" substitutionGroup="c:TouristVouchers"/>
+    <simpleType name="stars">
+        <restriction base="integer">
+            <minInclusive value="1"/>
+            <maxInclusive value="5"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="touristVoucherId">
+        <restriction base="integer">
+            <pattern value="\d{1,8}"/>
+        </restriction>
+    </simpleType>
+
+    <element name="voucher" type="c:TouristVoucher" abstract="true"/>
+    <element name="entertainment-trip" type="c:EntertainmentTrip" substitutionGroup="c:voucher"/>
+    <element name="business-trip" type="c:BusinessTrip" substitutionGroup="c:voucher"/>
 </schema>
