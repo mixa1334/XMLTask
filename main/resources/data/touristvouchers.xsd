@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="https://www.example.com/abstractTouristVouchers"
+        xmlns:c="https://www.example.com/abstractTouristVouchers"
+        elementFormDefault="qualified">
+    <element name="tourist-vouchers">
+        <complexType>
+            <sequence>
+                <element ref="c:TouristVouchers" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="TouristVoucher">
+        <sequence>
+            <element name="country" type="c:country"/>
+            <element name="number-of-days" type="integer"/>
+            <element name="hotel-characteristic" type="c:hotelCharacteristic"/>
+            <element name="coast" type="c:price"/>
+            <element name="date" type="date"/>
+        </sequence>
+        <attribute name="id" type="c:touristVoucherId" use="required"/>
+        <attribute name="name" type="string" use="optional" default="tourist voucher"/>
+    </complexType>
+
+    <complexType name="hotelCharacteristic">
+        <sequence>
+            <element name="number-of-stars">
+                <simpleType>
+                    <restriction base="integer">
+                        <minInclusive value="1"/>
+                        <maxExclusive value="5"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="name">
+                <simpleType>
+                    <restriction base="string"/>
+                </simpleType>
+            </element>
+            <element name="tv-presence">
+                <simpleType>
+                    <restriction base="boolean"/>
+                </simpleType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <complexType name="BusinessTrip">
+        <complexContent>
+            <extension base="c:TouristVoucher">
+                <sequence>
+                    <element name="company" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <complexType name="EntertainmentTrip">
+        <complexContent>
+            <extension base="c:TouristVoucher">
+                <sequence>
+                    <element name="type" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="country">
+        <restriction base="string">
+            <enumeration value="RUSSIA"/>
+            <enumeration value="POLAND"/>
+            <enumeration value="CANADA"/>
+            <enumeration value="AUSTRALIA"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="price">
+        <restriction base="unsignedInt">
+            <minInclusive value="0"/>
+            <maxInclusive value="10000"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="touristVoucherId">
+        <restriction base="ID">
+            <pattern value="\d{1,15}"/>
+        </restriction>
+    </simpleType>
+
+    <element name="TouristVouchers" type="c:TouristVoucher" abstract="true"/>
+    <element name="EntertainmentTrips" type="c:EntertainmentTrip" substitutionGroup="c:TouristVouchers"/>
+    <element name="BusinessTrips" type="c:BusinessTrip" substitutionGroup="c:TouristVouchers"/>
+</schema>
