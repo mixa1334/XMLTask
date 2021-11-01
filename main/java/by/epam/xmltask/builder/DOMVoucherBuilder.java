@@ -61,7 +61,7 @@ public class DOMVoucherBuilder extends AbstractVoucherBuilder {
     }
 
     private void buildList(NodeList vouchersList) throws CustomXMLException {
-        for (int i = 0; i < vouchers.size(); i++) {
+        for (int i = 0; i < vouchersList.getLength(); i++) {
             Element voucherElement = (Element) vouchersList.item(i);
             AbstractTouristVoucher voucher = buildVoucher(voucherElement);
             vouchers.add(voucher);
@@ -71,6 +71,12 @@ public class DOMVoucherBuilder extends AbstractVoucherBuilder {
     private AbstractTouristVoucher buildVoucher(Element element) throws CustomXMLException {
         AbstractTouristVoucher voucher = createVoucher(element);
 
+        if (element.hasAttribute(XMLTags.NAME.toXMLTag())) {
+            String name = element.getAttribute(XMLTags.NAME.toXMLTag());
+            voucher.setName(name);
+        }
+        String id = element.getAttribute(XMLTags.ID.toXMLTag());
+        voucher.setTouristVoucherId(Integer.parseInt(id));
         String country = getTagContent(element, XMLTags.COUNTRY);
         voucher.setCountry(Country.toCountry(country));
         String numberOfDays = getTagContent(element, XMLTags.NUMBER_OF_DAYS);
