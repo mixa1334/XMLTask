@@ -44,6 +44,7 @@ public class DOMVoucherBuilder extends AbstractVoucherBuilder {
             Element root = document.getDocumentElement();
 
             vouchers = new ArrayList<>();
+            logger.log(Level.INFO, "start parsing");
             NodeList vouchersList;
             String businessVouchers = XMLTags.BUSINESS_TRIP.toXMLTag();
             String entertainmentVouchers = XMLTags.ENTERTAINMENT_TRIP.toXMLTag();
@@ -52,6 +53,7 @@ public class DOMVoucherBuilder extends AbstractVoucherBuilder {
             buildList(vouchersList);
             vouchersList = root.getElementsByTagName(entertainmentVouchers);
             buildList(vouchersList);
+            logger.log(Level.INFO, "end parsing");
         } catch (SAXException e) {
             throw new CustomXMLException(e);
         } catch (IOException e) {
@@ -90,6 +92,7 @@ public class DOMVoucherBuilder extends AbstractVoucherBuilder {
         HotelCharacteristic hotelCharacteristic = buildHotelCharacteristic(element);
         voucher.setHotelCharacteristic(hotelCharacteristic);
 
+        logger.log(Level.INFO, "voucher -> " + voucher);
         return voucher;
     }
 
