@@ -13,6 +13,7 @@ public abstract class AbstractTouristVoucher {
     private LocalDate date;
 
     public AbstractTouristVoucher() {
+        name = "voucher";
     }
 
     public AbstractTouristVoucher(int touristVoucherId, String name, Country country
