@@ -3,7 +3,7 @@ package by.epam.xmltask.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class EntertainmentTrip extends AbstractTouristVouchers {
+public class EntertainmentTrip extends AbstractTouristVoucher {
     private String type;
 
     public EntertainmentTrip() {

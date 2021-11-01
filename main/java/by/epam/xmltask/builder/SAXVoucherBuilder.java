@@ -38,7 +38,7 @@ public class SAXVoucherBuilder extends AbstractVoucherBuilder {
     }
 
     @Override
-    public void buildVouchers(String pathToFile) throws CustomXMLException {
+    public void buildVouchersList(String pathToFile) throws CustomXMLException {
         try {
             reader.parse(pathToFile);
         } catch (IOException e) {

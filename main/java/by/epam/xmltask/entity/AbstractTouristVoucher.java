@@ -3,7 +3,7 @@ package by.epam.xmltask.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public abstract class AbstractTouristVouchers {
+public abstract class AbstractTouristVoucher {
     private int touristVoucherId;
     private String name;
     private Country country;
@@ -12,10 +12,10 @@ public abstract class AbstractTouristVouchers {
     private BigDecimal coast;
     private LocalDate date;
 
-    public AbstractTouristVouchers() {
+    public AbstractTouristVoucher() {
     }
 
-    public AbstractTouristVouchers(int touristVoucherId, String name, Country country
+    public AbstractTouristVoucher(int touristVoucherId, String name, Country country
             , int numberOfDays, HotelCharacteristic hotelCharacteristic, BigDecimal coast, LocalDate date) {
         this.touristVoucherId = touristVoucherId;
         this.name = name;
@@ -87,7 +87,7 @@ public abstract class AbstractTouristVouchers {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AbstractTouristVouchers that = (AbstractTouristVouchers) o;
+        AbstractTouristVoucher that = (AbstractTouristVoucher) o;
 
         if (touristVoucherId != that.touristVoucherId) return false;
         if (numberOfDays != that.numberOfDays) return false;

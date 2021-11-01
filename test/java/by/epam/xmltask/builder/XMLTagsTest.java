@@ -10,7 +10,7 @@ public class XMLTagsTest {
     public void testToXMLTag() {
         XMLTags expected = XMLTags.HOTEL_CHARACTERISTIC;
         String input = " hotel-characteriSTic ";
-        XMLTags actual = XMLTags.toXMLTag(input);
+        XMLTags actual = XMLTags.toEnum(input);
 
         assertEquals(actual, expected);
     }

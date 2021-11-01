@@ -1,7 +1,5 @@
 package by.epam.xmltask.builder;
 
-import java.util.Locale;
-
 public enum XMLTags {
     TOURIST_VOUCHERS,
     ID,
@@ -21,8 +19,12 @@ public enum XMLTags {
     private final static String HYPHEN = "-";
     private final static String UNDERSCORE = "_";
 
-    public static XMLTags toXMLTag(String str) {
-        String tag = str.strip().replaceAll(HYPHEN, UNDERSCORE).toUpperCase(Locale.ROOT);
+    public static XMLTags toEnum(String xmltag) {
+        String tag = xmltag.strip().replaceAll(HYPHEN, UNDERSCORE).toUpperCase();
         return valueOf(tag);
+    }
+
+    public String toXMLTag() {
+        return name().replaceAll(UNDERSCORE, HYPHEN).toLowerCase();
     }
 }

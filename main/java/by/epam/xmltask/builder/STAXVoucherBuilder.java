@@ -4,7 +4,7 @@ import by.epam.xmltask.exception.CustomXMLException;
 
 public class STAXVoucherBuilder extends AbstractVoucherBuilder{
     @Override
-    public void buildVouchers(String pathToFile) throws CustomXMLException {
+    public void buildVouchersList(String pathToFile) throws CustomXMLException {
 
     }
 }

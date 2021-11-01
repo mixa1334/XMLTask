@@ -15,18 +15,18 @@ import java.util.ArrayList;
 
 public class VoucherHandler extends DefaultHandler {
     private final static Logger logger = LogManager.getLogger();
-    private ArrayList<AbstractTouristVouchers> vouchersList;
-    private AbstractTouristVouchers voucher;
+    private ArrayList<AbstractTouristVoucher> vouchersList;
+    private AbstractTouristVoucher voucher;
     private HotelCharacteristic hotelCharacteristic;
     private XMLTags currentTag;
 
-    public ArrayList<AbstractTouristVouchers> getVouchers() {
+    public ArrayList<AbstractTouristVoucher> getVouchers() {
         return vouchersList;
     }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        currentTag = XMLTags.toXMLTag(qName);
+        currentTag = XMLTags.toEnum(qName);
         logger.log(Level.INFO, "current tag -> " + currentTag);
 
         if (currentTag.equals(XMLTags.TOURIST_VOUCHERS)) {
@@ -38,7 +38,7 @@ public class VoucherHandler extends DefaultHandler {
             for (int i = 0; i < attributes.getLength(); i++) {
                 String value = attributes.getValue(i);
                 String name = attributes.getQName(i);
-                XMLTags voucherAttribute = XMLTags.toXMLTag(name);
+                XMLTags voucherAttribute = XMLTags.toEnum(name);
                 switch (voucherAttribute) {
                     case ID -> voucher.setTouristVoucherId(Integer.parseInt(value));
                     case NAME -> voucher.setName(value);
@@ -53,7 +53,7 @@ public class VoucherHandler extends DefaultHandler {
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        XMLTags tag = XMLTags.toXMLTag(qName);
+        XMLTags tag = XMLTags.toEnum(qName);
         if (tag.equals(XMLTags.BUSINESS_TRIP) || tag.equals(XMLTags.ENTERTAINMENT_TRIP)) {
             logger.log(Level.INFO, "voucher added to list -> " + voucher);
             vouchersList.add(voucher);
