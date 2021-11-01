@@ -5,6 +5,10 @@ public class HotelCharacteristic {
     private String name;
     private boolean TVPresence;
 
+    public HotelCharacteristic() {
+
+    }
+
     public HotelCharacteristic(int numberOFStars, String name, boolean TVPresence) {
         this.numberOFStars = numberOFStars;
         this.name = name;

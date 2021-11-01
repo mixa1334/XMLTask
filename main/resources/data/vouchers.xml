@@ -8,7 +8,7 @@
         <number-of-days>5</number-of-days>
         <hotel-characteristic>
             <number-of-stars>2</number-of-stars>
-            <name>Trinity</name>
+            <hotel-name>Trinity</hotel-name>
             <tv-presence>true</tv-presence>
         </hotel-characteristic>
         <coast>50</coast>
@@ -21,7 +21,7 @@
         <number-of-days>4</number-of-days>
         <hotel-characteristic>
             <number-of-stars>4</number-of-stars>
-            <name>Renaissance</name>
+            <hotel-name>Renaissance</hotel-name>
             <tv-presence>false</tv-presence>
         </hotel-characteristic>
         <coast>240</coast>

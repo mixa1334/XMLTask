@@ -6,12 +6,20 @@ import java.time.LocalDate;
 public class EntertainmentTrip extends AbstractTouristVouchers {
     private String type;
 
-    public EntertainmentTrip(String type) {
-        this.type = type;
+    public EntertainmentTrip() {
     }
+
 
     public EntertainmentTrip(int touristVoucherId, String name, Country country, int numberOfDays, HotelCharacteristic hotelCharacteristic, BigDecimal coast, LocalDate date, String type) {
         super(touristVoucherId, name, country, numberOfDays, hotelCharacteristic, coast, date);
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
         this.type = type;
     }
 
