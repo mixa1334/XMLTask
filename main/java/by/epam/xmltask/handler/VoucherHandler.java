@@ -67,6 +67,7 @@ public class VoucherHandler extends DefaultHandler {
     public void characters(char[] ch, int start, int length) throws SAXException {
         if (currentTag != null) {
             String content = new String(ch, start, length);
+            logger.log(Level.INFO, "content of tag -> " + content);
             switch (currentTag) {
                 case COUNTRY -> voucher.setCountry(Country.toCountry(content));
                 case NUMBER_OF_DAYS -> voucher.setNumberOfDays(Integer.parseInt(content));
@@ -78,6 +79,7 @@ public class VoucherHandler extends DefaultHandler {
                 case TYPE -> ((EntertainmentTrip) voucher).setType(content);
                 case COMPANY -> ((BusinessTrip) voucher).setCompany(content);
             }
+            currentTag = null;
         }
     }
 }

@@ -44,6 +44,13 @@ public class EntertainmentTrip extends AbstractTouristVouchers {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("EntertainmentTrip{");
+        sb.append("touristVoucherId=").append(getTouristVoucherId());
+        sb.append(", name='").append(getName()).append('\'');
+        sb.append(", country=").append(getCountry());
+        sb.append(", numberOfDays=").append(getNumberOfDays());
+        sb.append(", hotelCharacteristic=").append(getHotelCharacteristic());
+        sb.append(", coast=").append(getCoast());
+        sb.append(", date=").append(getDate());
         sb.append("type='").append(type).append('\'');
         sb.append('}');
         return sb.toString();

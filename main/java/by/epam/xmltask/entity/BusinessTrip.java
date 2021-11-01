@@ -43,6 +43,13 @@ public class BusinessTrip extends AbstractTouristVouchers {
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("BusinessTrip{");
+        sb.append("touristVoucherId=").append(getTouristVoucherId());
+        sb.append(", name='").append(getName()).append('\'');
+        sb.append(", country=").append(getCountry());
+        sb.append(", numberOfDays=").append(getNumberOfDays());
+        sb.append(", hotelCharacteristic=").append(getHotelCharacteristic());
+        sb.append(", coast=").append(getCoast());
+        sb.append(", date=").append(getDate());
         sb.append("company='").append(company).append('\'');
         sb.append('}');
         return sb.toString();
